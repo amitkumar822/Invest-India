@@ -4,6 +4,7 @@ import clock from "../../../Photos/TimeExperience/clock.png";
 import now from "../../../Photos/TimeExperience/now.png";
 import years from "../../../Photos/TimeExperience/years.png";
 import NowBackground from "../../../Photos/TimeExperience/NowBackground.jpeg";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function TimeExperiencesPage() {
   // ========👇 Clock Functionality 👇========
@@ -22,6 +23,22 @@ function TimeExperiencesPage() {
     return () => clearInterval(intervalId);
   }, []);
   //   ========👆 End Clock Functionality 👆======
+
+  // ========�� Now Experience Functionality ��========
+  const [slide, setSlide] = useState(0);
+
+  const nextSlide = () => {
+    if (slide === YouTubeVideoLink.length-1) {
+        setSlide(0);
+        return;
+    };
+    setSlide(slide + 1);
+  };
+
+  const prevSlide = () => {
+    setSlide(slide - 1);
+  };
+  
 
   return (
     <>
@@ -146,7 +163,55 @@ function TimeExperiencesPage() {
             </div>
 
             {/* Youtube Video Section */}
-            <div></div>
+            <div className="mt-4">
+              <div className="flex rounded-md overflow-hidden">
+                {YouTubeVideoLink.map((data, index) => (
+                  <div
+                    style={{
+                      //👉 slide section
+                      transform: `translateX(-${slide * 100}%)`,
+                    }}
+                    className=""
+                    key={index}
+                  >
+                    <div className="mr-4">
+                      <iframe
+                        width="630"
+                        height="315"
+                        src={`https://www.youtube.com/embed/${
+                          data.link.split("/").pop().split("?")[0]
+                        }`}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin" // Updated from 'referrerpolicy' to 'referrerPolicy' to match JSX syntax
+                        allowFullScreen // Ensure that this attribute is present to enable full-screen mode
+                      ></iframe>
+                      <h1 className="text-xl font-roboCondensedSan text-gray-900">
+                        {data?.title}
+                      </h1>
+                      <p className="text-gray-500">{data?.type}</p>
+                      <p className="text-gray-500">{data?.year}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Arrow Section */}
+              <div className="flex my-3 items-center justify-start">
+                <div
+                  onClick={prevSlide}
+                  className="flex justify-center items-center cursor-pointer w-[30px] h-[30px] rounded-full mx-2 bg-[#e2e2e7] dark:bg-[#fc8019] hover:bg-green-500 dark:hover:bg-green-500"
+                >
+                  <FaArrowLeft />
+                </div>
+                <div
+                  onClick={nextSlide}
+                  className="flex justify-center items-center cursor-pointer w-[30px] h-[30px] rounded-full mx-2 bg-[#e2e2e7] dark:bg-[#fc8019] hover:bg-green-500 dark:hover:bg-green-500"
+                >
+                  <FaArrowRight />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -157,28 +222,28 @@ function TimeExperiencesPage() {
 export default TimeExperiencesPage;
 
 const YouTubeVideoLink = [
-    {
-        link: "https://youtu.be/qKfqKNPnR8M?si=4xDN6IDD9uAuhCL9",
-        title: "Key Milestones",
-        type: "Nayara Energy",
-        year: "Aug 30, 2022"
-    },
-    {
-        link: "https://youtu.be/qXO5rjRb9yA",
-        title: "Key Milestones",
-        type: "Waste to Wealth Technology Park - Jaffrabad",
-        year: "Jun 18, 2023"
-    },
-    {
-        link: "https://youtu.be/qKfqKNPnR8M?si=4xDN6IDD9uAuhCL9",
-        title: "Key Milestones",
-        type: "Nayara Energy",
-        year: "Aug 30, 2022"
-    },
-    {
-        link: "https://youtu.be/qXO5rjRb9yA",
-        title: "Key Milestones",
-        type: "Waste to Wealth Technology Park - Jaffrabad",
-        year: "Jun 18, 2023"
-    },
-]
+  {
+    link: "https://youtu.be/qKfqKNPnR8M?si=4xDN6IDD9uAuhCL9",
+    title: "Key Milestones1",
+    type: "Nayara Energy",
+    year: "Aug 30, 2022",
+  },
+  {
+    link: "https://youtu.be/qXO5rjRb9yA",
+    title: "Key Milestones2",
+    type: "Waste to Wealth Technology Park - Jaffrabad",
+    year: "Jun 18, 2023",
+  },
+  {
+    link: "https://youtu.be/qKfqKNPnR8M?si=4xDN6IDD9uAuhCL9",
+    title: "Key Milestones3",
+    type: "Nayara Energy",
+    year: "Aug 30, 2022",
+  },
+  {
+    link: "https://youtu.be/qXO5rjRb9yA",
+    title: "Key Milestones4",
+    type: "Waste to Wealth Technology Park - Jaffrabad",
+    year: "Jun 18, 2023",
+  },
+];
