@@ -42,7 +42,7 @@ function TimeExperiencesPage() {
 
   return (
     <>
-      <div className="w-full h-[550px] bg-[#211D28] text-white">
+      <div className="w-full h-[600px] bg-[#211D28] text-white">
         <div className="w-[90%] mx-auto grid lg:grid-cols-2 gap-4 py-10">
           {/*===👇 Clock part 👇===*/}
           <div className="grid md:grid-cols-2 gap-8">
