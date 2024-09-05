@@ -3,14 +3,18 @@ import Header from "./components/Header/Header";
 import TimeExperiencesPage from "./components/Home/TimeExperiences/TimeExperiencesPage";
 import ArticleAndBlogs from "./components/Home/ArticleBlogsSectors/ArticleAndBlogs";
 import Footer from "./components/Home/Footer/Footer";
+import Bulletin from "./components/Home/BulletinBoard/Bulletin";
+import GalleryNews from "./components/GalleryLatestNews/GalleryNews";
 
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header />
       <TimeExperiencesPage />
       <ArticleAndBlogs />
-      <Footer />
+      <Bulletin /> */}
+      <GalleryNews />
+      {/* <Footer /> */}
     </>
   );
 }

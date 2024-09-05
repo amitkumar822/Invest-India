@@ -81,9 +81,6 @@ function Footer() {
           backgroundImage: `url(${backgroundInv})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          // height: "150px",
-          // width: "100%",
-          // position: "fixed",
         }}
       >
         <div className="w-full h-screen bg-[rgba(0,0,0,0.5)]">
@@ -94,7 +91,7 @@ function Footer() {
               <div className="flex gap-2 items-center text-xl mt-8">
                 {" "}
                 <MdOutlineMailOutline />
-                <span>contact@investindia.org.in</span>
+                <div>contact@investindia.org.in</div>
               </div>
               <div className="flex gap-2 items-center text-xl mt-4">
                 {" "}
@@ -153,18 +150,18 @@ function Footer() {
 
               <div className="mt-24">
                 <div className="font-robotoHelvAriSan flex justify-between pb-1 border-b-2 border-pink-400">
-                  <span className="text-white uppercase">Invest India</span>{" "}
-                  <span className="text-yellow-300">About Us Careers Policies, Research and Reports</span>
+                  <div className="text-white uppercase">Invest India</div>{" "}
+                  <div className="text-yellow-300">About Us Careers Policies, Research and Reports</div>
                 </div>
 
                 <div className="font-robotoHelvAriSan flex justify-between pb-1 border-b-2 border-pink-400 mt-8">
-                  <span className="text-white uppercase">Investment <br /> Opportunities</span>{" "}
-                  <span className="text-yellow-300">States in India Sectors in India</span>
+                  <div className="text-white uppercase">Investment <br /> Opportunities</div>{" "}
+                  <div className="text-yellow-300">States in India Sectors in India</div>
                 </div>
 
                 <div className="font-robotoHelvAriSan flex justify-between pb-1 border-b-2 border-pink-400 mt-8">
-                  <span className="text-white uppercase">Resources</span>{" "}
-                  <span className="text-yellow-300">Production Linked Incentives (PLI) Schemes in India</span>
+                  <div className="text-white uppercase">Resources</div>{" "}
+                  <div className="text-yellow-300">Production Linked Incentives (PLI) Schemes in India</div>
                 </div>
               </div>
             </div>

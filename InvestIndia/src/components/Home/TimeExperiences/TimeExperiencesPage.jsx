@@ -186,11 +186,11 @@ function TimeExperiencesPage() {
                         referrerPolicy="strict-origin-when-cross-origin" // Updated from 'referrerpolicy' to 'referrerPolicy' to match JSX syntax
                         allowFullScreen // Ensure that this attribute is present to enable full-screen mode
                       ></iframe>
-                      <h1 className="text-xl font-roboCondensedSan text-gray-900">
+                      <h1 className="text-xl text-red-600 font-roboCondensedSan">
                         {data?.title}
                       </h1>
                       <p className="text-gray-500">{data?.type}</p>
-                      <p className="text-gray-500">{data?.year}</p>
+                      <p className="text-green-600">{data?.year}</p>
                     </div>
                   </div>
                 ))}

@@ -21,7 +21,7 @@ function ArticleAndBlogs() {
                 />
                 <div>
                   <h1 className="text-[#2EA35E]">{details.year}</h1>
-                  <p className="text-[#171717] text-[15px] font-semibold">
+                  <p className="text-[#171717] text-[15px] hover:text-red-500 cursor-pointer font-semibold">
                     {details.description}
                   </p>
                   <span className="flex gap-2 border-b-2 pb-2">
