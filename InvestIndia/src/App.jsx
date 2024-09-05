@@ -9,12 +9,12 @@ import GalleryNews from "./components/GalleryLatestNews/GalleryNews";
 function App() {
   return (
     <>
-      {/* <Header />
+      <Header />
       <TimeExperiencesPage />
       <ArticleAndBlogs />
-      <Bulletin /> */}
+      <Bulletin />
       <GalleryNews />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

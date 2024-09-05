@@ -5,28 +5,32 @@ function GalleryNews() {
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
-    if (slide === YouTubeVideoLink.length - 1) {
-      setSlide(0);
-      return;
-    }
-    setSlide(slide + 1);
+    const nextIndex = (slide + 1) % YouTubeVideoLink.length;
+    setSlide(nextIndex);
+    setFilterVideoLink(
+      YouTubeVideoLink[nextIndex].link.split("/").pop().split("?")[0]
+    );
   };
 
+  // Previous Slide Function
   const prevSlide = () => {
-    setSlide(slide - 1);
+    const prevIndex =
+      (slide - 1 + YouTubeVideoLink.length) % YouTubeVideoLink.length; // Loop to the last video if at the first
+    setSlide(prevIndex); // Update the current slide
+    setFilterVideoLink(
+      YouTubeVideoLink[prevIndex].link.split("/").pop().split("?")[0]
+    ); // Update the main video
   };
 
-
-  //=====👇 YouTube Filter Base on Slider Video 👇=====
+  //=====👇 YouTube Filter Based on Clicked Video 👇=====
   const [videoLink, setVideoLink] = useState(YouTubeVideoLink);
-  const [filterVideoLink, setFilterVideoLink] = useState("");
+  const [filterVideoLink, setFilterVideoLink] = useState(
+    videoLink[0].link.split("/").pop().split("?")[0]
+  ); // 👉 Set the default video to the first video in the list
 
-  const handleOnClickVideo = (index) => {
-    setFilterVideoLink(YouTubeVideoLink.filter((_, i) => i!== index));
-  }
-
-  console.log("Link: " + filterVideoLink);
-  
+  const handleOnClickVideo = (videoId) => {
+    setFilterVideoLink(videoId); // 👉 Update the filterVideoLink with the clicked videoId
+  };
 
   return (
     <div className="w-[80%] h-[800px] mx-auto grid lg:grid-cols-[60%_auto] gap-20 py-5">
@@ -37,29 +41,32 @@ function GalleryNews() {
           Gallery
         </h1>
 
-        {/* video part */}
-        <div className="w-full h-full border border-black mr-10 pt-4">
+        <div className="w-full h-full rounded-md overflow-hidden shadow-md shadow-gray-400 mr-10 pt-4">
+          {/* Main Video Part */}
           <iframe
             width="706"
             height="415"
-            src="https://www.youtube.com/embed/xuN2isLGRoU?si=SyrlFcYAdbawsNnw"
+            src={`https://www.youtube.com/embed/${filterVideoLink}`} // 👉 Dynamically changes based on filterVideoLink
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin" // Updated from 'referrerpolicy' to 'referrerPolicy' to match JSX syntax
-            allowFullScreen // Ensure that this attribute is present to enable full-screen mode
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           ></iframe>
+
           <div>
             {/* Items or Image Section */}
-            <div className="flex overflow-hidden mt-5">
+            <div className="flex overflow-hidden mt-5 relative">
               {videoLink.map((data, index) => (
                 <div
                   style={{
-                    //👉 slide section
+                    //👉 Slide section
                     transform: `translateX(-${slide * 95}%)`,
                   }}
-                  className=" bg-gradient-to-r from-blue-300 to-yellow-300 p-2 rounded-3xl ml-4 shrink-0 cursor-pointer duration-500 border border-pink-600"
+                  className=" p-2 rounded-3xl ml-4 shrink-0 cursor-pointer duration-500 relative"
                   key={index}
-                //   onClick={handleOnClickVideo(index)}    
+                  onClick={() =>
+                    handleOnClickVideo(data.link.split("/").pop().split("?")[0])
+                  } // 👉 Changes the main video on click
                 >
                   <iframe
                     width="300"
@@ -69,9 +76,10 @@ function GalleryNews() {
                     }`}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin" // Updated from 'referrerpolicy' to 'referrerPolicy' to match JSX syntax
-                    allowFullScreen // Ensure that this attribute is present to enable full-screen mode
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
                   ></iframe>
+                  <div className="w-full h-full top-0 left-0 rounded-[8%] bg-[rgba(0,0,0,0.2)] absolute"></div>
                 </div>
               ))}
             </div>
@@ -101,9 +109,9 @@ function GalleryNews() {
           <div className="w-[40px] h-[3px] bg-[#1fa37f]" />
           Latest News
         </h1>
-        <div className="w-full h-[80%] overflow-y-auto mt-4 rounded-md shadow-md shadow-gray-400">
+        <div className="w-full overflow-y-auto mt-4 rounded-md shadow-md shadow-gray-400">
           {/*  */}
-          <div className="h-[670px] px-2 py-2 font-robotoHelvAriSan">
+          <div className="h-[720px] px-2 py-2 font-robotoHelvAriSan">
             {NewsList.map((details, index) => (
               <div
                 className="flex gap-6 justify-end items-center border-b-2"
